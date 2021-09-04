@@ -20,7 +20,7 @@ def hello():
     return "<h1>hello there !!!!!!!!!!!!!!!!!!!!!!!</h1>"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run()
 
 
 python myproject.py
@@ -32,7 +32,7 @@ from myproject import app
 if __name__ == "__main__":
     app.run()
 
-gunicorn --bind 0.0.0.0:5000 wsgi:app
+gunicorn --bind 127.0.0.1:5000 wsgi:app
 
 deactivate 
 
@@ -60,7 +60,7 @@ nano  /etc/nginx/sites-available/codingx.in
 
 server {
     listen 80;
-    server_name codingx.in;
+    server_name localhost;
 
 location / {
   include proxy_params;
@@ -73,3 +73,12 @@ ln -s /etc/nginx/sites-available/codingx.in /etc/nginx/sites-enabled/codingx.in
 sudo systemctl restart nginx
 
 sudo ufw allow 'Nginx Full'
+
+
+
+
+
+???????????????????????????
+
+
+/bin/python -m gunicorn.app.wsgiapp  --chdir /opt/mmm/microservice wsgi:app
